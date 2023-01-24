@@ -12,7 +12,7 @@ const App = () => {
   const searchMovies = async (title) => {
     const response = await fetch(`${api_url}&s=${title}`);
     const data = await response.json();
-    console.log(data);
+    
     setMovies(data.Search);
   };
 
@@ -32,7 +32,7 @@ const App = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button className="imagebutton"
-          disabled={!Boolean(searchTerm)}
+          disabled={!Boolean(searchTerm.trim)}
           onClick={() => searchMovies(searchTerm)}
         >
           <img
